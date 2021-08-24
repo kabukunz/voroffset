@@ -8,17 +8,28 @@ OUTPUT_DIR=${SCRIPT_DIR}/data/output
 OBJECT=${1}
 RES=${2}
 
+# dexelize
+
 ${BUILD_DIR}/offset3d ${DATA_DIR}/${OBJECT}.obj -o "${OUTPUT_DIR}/${OBJECT}_dexelized.xyz" -f -n ${RES} -x noop
 
 # no error
 # ./run3dxyzobj.sh mickey8_unrm 2048
+
+# reconstruct
 
 /Users/max/Developer/Library/Graphics/geogram/build/Darwin-clang-dynamic-Release/bin/vorpalite \
 pre=false remesh=false post=false \
 co3ne=true \
 co3ne:radius=5 \
 co3ne:repair=true \
-"${OUTPUT_DIR}/${OBJECT}_dexelized.xyz" "${OUTPUT_DIR}/${OBJECT}_surface.obj"
+"${OUTPUT_DIR}/${OBJECT}_dexelized.xyz" "${OUTPUT_DIR}/${OBJECT}_recn.obj"
+
+# decimate
+
+/Users/max/Developer/Library/Graphics/geogram/build/Darwin-clang-dynamic-Release/bin/vorpalite \
+remesh=false post=false co3ne=false \
+pre:vcluster_bins=10 \
+"${OUTPUT_DIR}/${OBJECT}_recn.obj" "${OUTPUT_DIR}/${OBJECT}_recn_dec.obj"
 
 # ./run3dxyzobj.sh mickey8_unrm 1024
 
