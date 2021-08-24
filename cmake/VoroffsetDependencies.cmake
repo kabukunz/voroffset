@@ -18,8 +18,9 @@ endif()
 # Eigen
 if(NOT TARGET Eigen3::Eigen)
 	add_library(voroffset_eigen INTERFACE)
-	voroffset_download_eigen()
-	target_include_directories(voroffset_eigen SYSTEM INTERFACE ${VOROFFSET_EXTERNAL}/eigen)
+	# voroffset_download_eigen()
+	# target_include_directories(voroffset_eigen SYSTEM INTERFACE ${VOROFFSET_EXTERNAL}/eigen)
+    target_include_directories(voroffset_eigen SYSTEM INTERFACE /Users/max/Developer/Library/Graphics/voroffset/external/eigen)
 	add_library(Eigen3::Eigen ALIAS voroffset_eigen)
 endif()
 
