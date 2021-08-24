@@ -4,4 +4,4 @@
 # decimate bins = 100
 
 # run all 3d pipeline 
-./run3dall.sh mickey8_unrm 2048 200
+./run3dall.sh mickey8_unrm 2048 300
