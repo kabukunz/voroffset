@@ -11,11 +11,11 @@ RES=${2}
 BINS=${3}
 
 # dexelize 
-# ./run3ddexl.sh ${OBJECT} ${RES}
+./run3ddexl.sh ${OBJECT} ${RES}
 
 # reconstruct
 
-# ./run3drecn.sh ${OBJECT}
+./run3drecn.sh ${OBJECT}
 
 # decimate
 
